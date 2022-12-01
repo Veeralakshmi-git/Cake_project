@@ -1,0 +1,260 @@
+*{
+    margin:0;
+    padding:0;
+    box-sizing: border-box;
+}
+img{
+    display: block;
+    max-width: 100%;
+    height:auto;
+}
+
+.nowrap{
+     white-space: nowrap;
+}
+html{
+    scroll-behavior: smooth;
+}
+
+body{
+    font-size:1.5rem;
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    min-height: 100vh;
+
+    background-color: #f8f190;
+    background-image: radial-gradient(whitesmoke,#f8f190);
+    display: flex;
+    flex-direction: column;
+}
+
+header,footer{
+    position:sticky;
+    background-color: #1e293b;
+    color:whitesmoke;
+    text-align: center;
+}
+
+/* :is(header,footer){
+    position:sticky;
+    background-color: #1e293b;
+    color:whitesmoke;
+    text-align: center;
+} */
+/* :where(header,footer,.card){
+    position:sticky;
+    background-color: #1e293b;
+    color:whitesmoke;
+    text-align: center;
+} */
+header{
+    top:0;
+    color:rgb(231, 235, 34);
+    z-index: 1;
+}
+
+nav{
+    
+    background-color: #fff;
+    padding:0.5rem;
+    border-bottom: 2px solid #000;
+    font-weight: bolder;
+    display:flex;
+    justify-content: space-evenly;
+}
+/* nav a:link,nav a:visited{
+    color:#000;
+} */
+nav a:any-link{
+    color:#000 ;
+}
+
+nav :is(a:hover,a:focus) {
+    color:rgba(51, 78, 236, 0.6);
+}
+
+nav a:active{   
+    color:red;
+}
+main{
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap:1.5rem;
+    padding: 0.5rem;
+
+}
+footer{
+    bottom: 0; 
+    height:40px; 
+    z-index: 1;
+}
+
+.card{
+ 
+    scroll-margin-top:8rem ;
+    width:min(100%,390px);
+    background-color: #fdfad3;
+    border:2px solid #000;
+    border-radius: 15px;
+    padding:2rem;
+    display: flex;
+    flex-direction: column;
+    align-items:center;
+    align-content: space-around;
+}
+.card:target{
+    border: 2px solid rgb(26, 5, 209);
+}
+
+.card figure{
+    display: flex;
+    flex-flow: column nowrap;
+
+}
+
+.card img{
+    border:5px double #333;
+    border-radius: 50%;
+}
+.card img[alt]{
+  border:5px solid purple;
+}
+
+.card:hover:nth-child(1){
+    background-color: rgb(201, 184, 248);
+}
+.card:hover:nth-child(2){
+    background-color: rgb(162, 241, 15);
+}
+.card:hover:nth-child(3){
+    background-color: rgb(250, 236, 35);
+}
+
+/* .card img:not([alt]){
+    border:5px solid rgb(133, 37, 133);
+} */
+
+.card figcaption{
+    font-weight: bolder;
+    font-size: 1.5rem;
+    margin:1rem;
+    text-align: center;
+
+}
+
+.card:nth-child(1) figcaption::after{
+    content:'​🍓​🍰​';
+    display: block;
+}
+.card:nth-child(2) figcaption::after{
+    content:'​🍌🍰​​';
+    display: block;
+}
+.card:nth-child(3) figcaption::after{
+    content:'🍫​​🍰​';
+    display: block;
+    
+}
+
+.card figcaption::first-letter{
+    font-size: 3rem;
+    color:rgb(236, 22, 104);
+    font-style: italic;
+}
+.card p{
+    position: relative;
+}
+.card p::before{
+    content:open-quote ;
+    font-size: 2em;
+    position: absolute;
+    top:-0.25em;
+    left:-0.5em;
+    
+}
+.card p::after{
+    content:close-quote;
+    font-size: 2em;
+    position: absolute;
+    top:-0.25em;
+   right:-0.5em;
+    
+}
+
+@media screen and (min-width:576px){
+    main{
+        justify-content: center;
+        flex-flow: row wrap;
+        padding:1rem;
+    }
+
+    .card{
+        width:min(100%,400px);
+    }
+
+    .card:last-child{
+        order:-1;
+    }
+}
+
+@media screen and (min-width:768px){
+    nav{
+        display: none;
+    }
+    .card{
+        width: min(100%,325px);
+    }
+    .card figure{
+        flex-flow: column-reverse;
+    }
+
+    .card figcaption{
+        margin:1em 0;
+    }
+    .card p{
+        margin-top: 1rem;
+    }
+}
+@media screen and (min-width:992px){
+    .card{
+        width:min(100%,400px);
+    }
+    .card:nth-child(2){
+        order:-1;
+    }
+}
+
+@media screen and (min-width:1200px){
+    .card{
+        width:min(calc(33% - 1rem),480px);
+    }
+
+}
+@media screen and (max-height:425px) and (min-aspect-ratio:7/4){
+    h1{
+        font-size:1.5rem;
+    }
+    nav{
+        display:none;
+    }
+    img{
+        width: 100%;
+        height: auto;
+    }
+    main{
+        flex-flow: row nowrap;
+        justify-content: space-evenly;
+        align-items:stretch;
+    }
+    .card{
+        width:min(calc(33% - 0.25rem),200px);
+    }
+
+    .card figcaption,.card p{
+        font-size: 1.25rem;
+    }
+
+
+
+}
